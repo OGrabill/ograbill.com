@@ -16,15 +16,15 @@
   <script>
   var programCode = function(processingInstance) {
     with (processingInstance) {
-      size(window.innerWidth, window.innerHeight); 
+      size(window.innerWidth-20, window.innerHeight-20); 
       frameRate(60);
       var rot = 0;
 	    
       // Code here:
         draw = function () {
       rot = rot + 0.05;
-      var w = window.innerWidth;
-      var h = window.innerHeight;
+      var w = window.innerWidth-20;
+      var h = window.innerHeight-20;
       background(255,255,255);
       fill(255, 255, 0);
       angleMode = "degrees";
