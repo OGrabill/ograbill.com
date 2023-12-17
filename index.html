@@ -19,22 +19,27 @@
       size(window.innerWidth, window.innerHeight); 
       frameRate(30);
       // Code here:
-      draw = function () {
+        draw = function () {
       var w = window.innerWidth;
       var h = window.innerHeight;
-
-	background(255,255,255);
-	fill(255, 255, 0);
-	ellipse(w/2, h/2, 200, 200);
-	noFill();
-	stroke(0, 0, 0);
-	strokeWeight(2);
-	arc(w/2, h/2, 150, 100, 0, PI);
-	fill(0, 0, 0);
-	ellipse(w/2+50, h/2, 10, 10);
-	ellipse(w/2-47, h/2, 10, 10);
-
-	};
+      var rot = 0;
+      background(255,255,255);
+      fill(255, 255, 0);
+      angleMode = "degrees";
+      translate(w/2, h/2); 
+      rotate(rot);
+      ellipse(0, 0, 200, 200);
+      noFill();
+      stroke(0, 0, 0);
+      strokeWeight(2);
+      arc(0, 0, 150, 100, 0, PI);
+      fill(0, 0, 0);
+      ellipse(50, 0, 10, 10);
+      ellipse(-47, 0, 10, 10);
+      rot = rot + 0.1;
+      
+      };
+      
       // Code end:
       }};
 
