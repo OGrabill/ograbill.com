@@ -21,14 +21,14 @@
       var w = window.innerWidth;
       var h = window.innerHeight;
       fill(255, 255, 0);
-      ellipse(w, h, 200, 200);
+      ellipse(w/2, h/2, 200, 200);
       noFill();
       stroke(0, 0, 0);
       strokeWeight(2);
-      arc(200, 200, 150, 100, 0, PI);
+      arc(w/2, h/2, 150, 100, 0, PI);
       fill(0, 0, 0);
-      ellipse(250, 200, 10, 10);
-      ellipse(153, 200, 10, 10);
+      ellipse(w/2+50, h/2, 10, 10);
+      ellipse(w/2-47, h/2, 10, 10);
     }};
 
   // Get the canvas that ProcessingJS will use
