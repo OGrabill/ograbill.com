@@ -22,4 +22,3 @@ canvas.addEventListener('mousemove', function(evt) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillRect(mousePos.x, mousePos.y, 10, 10);
 }, false);
-```
