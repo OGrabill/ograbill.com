@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html> 
   <head>
-    <title>Knife Throwing Game</title> 
+    <title>Processing.JS inside Webpages: Template</title> 
   </head>
   <body>
 	<!--This draws the canvas on the webpage -->
@@ -18,7 +18,16 @@
       frameRate(30);
         
       // Paste code from Khan Academy here:
-		rect(40,40,200,200);
+      fill(255, 255, 0);
+      ellipse(200, 200, 200, 200);
+      noFill();
+      stroke(0, 0, 0);
+      strokeWeight(2);
+      arc(200, 200, 150, 100, 0, PI);
+      fill(0, 0, 0);
+      ellipse(250, 200, 10, 10);
+      ellipse(153, 200, 10, 10);
+    }};
 
   // Get the canvas that ProcessingJS will use
   var canvas = document.getElementById("mycanvas"); 
