@@ -18,11 +18,12 @@
     with (processingInstance) {
       size(window.innerWidth, window.innerHeight); 
       frameRate(30);
+      var rot = 0;
+	    
       // Code here:
         draw = function () {
       var w = window.innerWidth;
       var h = window.innerHeight;
-      var rot = 0;
       background(255,255,255);
       fill(255, 255, 0);
       angleMode = "degrees";
