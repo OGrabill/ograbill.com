@@ -17,11 +17,12 @@
   var programCode = function(processingInstance) {
     with (processingInstance) {
       size(window.innerWidth, window.innerHeight); 
-      frameRate(30);
+      frameRate(60);
       var rot = 0;
 	    
       // Code here:
         draw = function () {
+      rot = rot + 0.05;
       var w = window.innerWidth;
       var h = window.innerHeight;
       background(255,255,255);
@@ -37,7 +38,9 @@
       fill(0, 0, 0);
       ellipse(50, 0, 10, 10);
       ellipse(-47, 0, 10, 10);
-      rot = rot + 0.1;
+      rot = rot - 0.05;
+      
+      
       //println(rot+" , "+w+" , "+w)
       };
       
