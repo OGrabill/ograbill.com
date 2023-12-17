@@ -5,6 +5,6 @@ ctx.fillStyle = "green";
 
 while (true) {
 
-    rect(mouseX,mouseY,40,40);
+    ctx.rect(mouseX,mouseY,40,40);
     ctx.fillRect(10, 10, 100, 100);
 }
