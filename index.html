@@ -8,8 +8,7 @@
 <link rel="manifest" href="/site.webmanifest">
   </head>
   <body>
-	<img src="https://picsum.photos/200/300" />
-	  <img/>
+	
     <canvas id="mycanvas"></canvas> 
   </body>
 	
@@ -22,7 +21,6 @@
       frameRate(60);
       var rot = 0;
 	const img = document.querySelector("img"); 
-	img.src = "https://picsum.photos/200/301";
 
       // Code here:
         draw = function () {
@@ -43,7 +41,8 @@
       ellipse(50, 0, 10, 10);
       ellipse(-47, 0, 10, 10);
       rotate(-rot-0.05);
-      
+      textAlign(CENTER, CENTER);
+      text("🗡️",0,100);
 
 		
       //println(rot+" , "+w+" , "+w)
