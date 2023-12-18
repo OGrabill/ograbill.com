@@ -9,103 +9,110 @@
   </head>
   <body>
     <canvas id="mycanvas"></canvas>
-  </body>
 
-  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
-  <script>
-    var programCode = function (processingInstance) {
-      with (processingInstance) {
-        var gap = 70;
-        size(
-          window.innerWidth - window.innerWidth / gap,
-          window.innerHeight - window.innerHeight / gap - gap / 7
-        );
-        frameRate(60);
-        var circleAngle = 0;
-        angleMode = "degrees";
+    <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
+    <script>
+      var programCode = function (processingInstance) {
+        with (processingInstance) {
+          var gap = 70;
+          size(
+            window.innerWidth - window.innerWidth / gap,
+            window.innerHeight - window.innerHeight / gap - gap / 7
+          );
+          frameRate(60);
+          var circleAngle = 0;
+          angleMode = "degrees";
 
-        // useful constants
-        var w = window.innerWidth - window.innerWidth / gap;
-        var h = window.innerHeight - window.innerHeight / gap;
-        
-        const img = document.querySelector("img");
+          // useful constants
+          var w = window.innerWidth - window.innerWidth / gap;
+          var h = window.innerHeight - window.innerHeight / gap;
 
-        // All active knives (one not thrown is fake)
-        // Ex: Knife = [10, 100, 10], where number is y value
-        var knives = [];
+          const img = document.querySelector("img");
 
-        draw = function () {
-          // Color background
-          background(255, 255, 255);
-          fill(255, 255, 0);
-          
-          translate(w / 2, h / 2);
-          
-          rotate(circleAngle);
-          
-          ellipse(0, 0, 200, 200);
-          
-          noFill();
-          
-          stroke(0, 0, 0);
-          
-          strokeWeight(2);
-          
-          arc(0, 0, 150, 100, 0, PI);
-          
-          fill(0, 0, 0);
-          
-          ellipse(50, 0, 10, 10);
-          
-          ellipse(-47, 0, 10, 10);
-          
-          rotate(-circleAngle);
+          // All active knives (one not thrown is fake)
+          // Ex: Knife = [10, 100, 10], where number is y value
+          var knives = [];
 
-          fill(0, 0, 0);
-          
-          textSize(60);
+          var knifeSpeed = 1;
 
-          var drawKnife = function(x, y) {
-            translate(x, y);
+          var knifeCuttof = 100;
+
+          draw = function () {
+            // Color background
+            background(255, 255, 255);
+            fill(255, 255, 0);
+
+            translate(w / 2, h / 2);
+
+            rotate(circleAngle);
+
+            ellipse(0, 0, 200, 200);
+
+            noFill();
+
+            stroke(0, 0, 0);
+
+            strokeWeight(2);
+
+            arc(0, 0, 150, 100, 0, PI);
+
             fill(0, 0, 0);
-            rect(x - 10, y - 10, 20, 20);
-            translate(-x, -y);
-          }
 
-          // Add new knife when key pressed
-          keyTyped = function () {
-            if (keyCode === 0) {
-              knives[knives.length] = 120;
+            ellipse(50, 0, 10, 10);
+
+            ellipse(-47, 0, 10, 10);
+
+            rotate(-circleAngle);
+
+            fill(0, 0, 0);
+
+            textSize(60);
+
+            var drawKnife = function (x, y) {
+              translate(x, y);
+              fill(0, 0, 0);
+              rect(x - 10, y - 10, 20, 20);
+              translate(-x, -y);
+            };
+
+            // Add new knife when key pressed
+            keyTyped = function () {
+              if (keyCode === 0) {
+                knives[knives.length] = 80;
+              }
+            };
+
+            //println(rot+" , "+w+" , "+w)
+
+            // Render each knife
+            knives.forEach((knife) => drawKnife(0, knife));
+
+            // Subtract one from each knife's position
+            knives = knives.map((knife) => knife - 1);
+
+            for (var i = 0; i < knives.length; i++) {
+              // When knife has hit
+              if (knives[i] < 54) {
+                console.log("Collision");
+              }
             }
+
+            // delete all knives that have gone too far from list
+            knives = knives.filter((knife) => knife >= 54);
+
+            // Make circle rotate
+            circleAngle += 0.05;
+
+            // Draw fake knife
+            drawKnife(0, 80);
           };
 
-          //println(mouseX+" , "+mouseY);
+          // Code end:
+        }
+      };
 
-          // For all knives, render, and make it go up by 1 pixel. If it goes past 0 (the top), delete.
-          for (var i = 0; i < knives.length; i++) {
-            drawKnife(0, knives[i]);
-            knives[i] -= 1;
-
-            if (knives[i] < 54) {
-              knives[i] = null;
-            }
-
-
-          }
-
-          // Make circle rotate
-          circleAngle += 0.05;
-
-          // Draw fake knife
-          drawKnife(0, 120);
-        };
-
-
-        // Code end:
-      }
-    };
-
-    var canvas = document.getElementById("mycanvas");
-    var processingInstance = new Processing(canvas, programCode);
-  </script>
+      var canvas = document.getElementById("mycanvas");
+      var processingInstance = new Processing(canvas, programCode);
+    </script>
+  </body>
 </html>
