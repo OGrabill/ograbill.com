@@ -41,23 +41,22 @@
       fill(0, 0, 0);
       ellipse(50, 0, 10, 10);
       ellipse(-47, 0, 10, 10);
-      rotate(-rot-0.05);
+      rotate(-rot);
 
 
 		
       fill(0,0,0);
       textSize(60);
       
-      knife = function(x,y,rotation) {
+      knife = function(x,y) {
       translate(x, y); 
       fill(0,0,0);
-      rotate(2.4);
-      text("🗡️",x-42,y+22);
-      ellipse(x,y,20,20);
-      rotate(-2.4);
+      //text("🗡️",x-42,y+22);
+      rect(x-10,y-10,20,20);
+      translate(-x, -y); 
       }
 
-      knife(0,0,0);
+      knife(0,80);
 
 		
       //println(rot+" , "+w+" , "+w)
