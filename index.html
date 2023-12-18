@@ -39,9 +39,38 @@
       fill(0, 0, 0);
       ellipse(50, 0, 10, 10);
       ellipse(-47, 0, 10, 10);
-      rotate(-rot);
+      rotate(-rot-0.05);
       
-      
+      function draw() { 
+  background(0);
+  beginShape();
+  vertex(203, 179);
+  vertex(205, 224);
+  vertex(329, 179);
+endShape(CLOSE)
+  
+  beginShape();
+  vertex(83, 179);
+  vertex(205, 179);
+  vertex(205,209);
+  vertex(83,209);
+  
+endShape(CLOSE)
+  
+  push();
+  strokeWeight(1)
+  fill(0);
+  ellipse(100, 194, 10);
+  ellipse(130, 194, 10);
+  ellipse(160, 194, 10);
+  pop();
+  
+  
+}
+
+draw();
+
+		
       //println(rot+" , "+w+" , "+w)
       };
       
