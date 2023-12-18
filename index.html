@@ -8,7 +8,8 @@
 <link rel="manifest" href="/site.webmanifest">
   </head>
   <body>
-
+	<img src="https://picsum.photos/200/300" />
+	  <img/>
     <canvas id="mycanvas"></canvas> 
   </body>
 	
@@ -20,7 +21,9 @@
       size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap); 
       frameRate(60);
       var rot = 0;
-	    
+	const img = document.querySelector("img"); 
+	img.src = "https://picsum.photos/200/301";
+
       // Code here:
         draw = function () {
       rot = rot + 0.05;
