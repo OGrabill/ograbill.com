@@ -1,79 +1,111 @@
 <!DOCTYPE html>
-<html> 
+<html>
   <head>
-    <title>Knife Throwing Game</title> 
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+    <title>Knife Throwing Game</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-	
-    <canvas id="mycanvas"></canvas> 
+    <canvas id="mycanvas"></canvas>
   </body>
-	
-  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
   <script>
-  var programCode = function(processingInstance) {
-    with (processingInstance) {
-      var gap = 70;
-      size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap-gap/7); 
-      frameRate(60);
-      var rot = 0;
-	const img = document.querySelector("img"); 
+    var programCode = function (processingInstance) {
+      with (processingInstance) {
+        var gap = 70;
+        size(
+          window.innerWidth - window.innerWidth / gap,
+          window.innerHeight - window.innerHeight / gap - gap / 7
+        );
+        frameRate(60);
+        var circleAngle = 0;
+        angleMode = "degrees";
 
-
-
-      // Code here:
-      
-    draw = function () {
-    size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap-gap/7); 
-    rot = rot + 0.05;
-    var w = window.innerWidth-window.innerWidth/gap;
-    var h = window.innerHeight-window.innerHeight/gap;
-    background(255,255,255);
-    fill(255, 255, 0);
-    angleMode = "degrees";
-    translate(w/2, h/2); 
-    rotate(rot);
-    ellipse(0, 0, 200, 200);
-    noFill();
-    stroke(0, 0, 0);
-    strokeWeight(2);
-    arc(0, 0, 150, 100, 0, PI);
-    fill(0, 0, 0);
-    ellipse(50, 0, 10, 10);
-    ellipse(-47, 0, 10, 10);
-    rotate(-rot);
-
-
-    fill(0,0,0);
-        textSize(60);
-      
-        var knife = function(x,y,num) {
-        translate(x, y); 
-        fill(0,0,0);
-        //text("🗡️",x-42,y+22);
-        rect(x-10,y-10,20,20);
-        translate(-x, -y); 
-        }
-      
-        knife(0,80,0);
+        // useful constants
+        var w = window.innerWidth - window.innerWidth / gap;
+        var h = window.innerHeight - window.innerHeight / gap;
         
-        keyTyped = function() {
+        const img = document.querySelector("img");
+
+        // All active knives (one not thrown is fake)
+        // Ex: Knife = [10, 100, 10], where number is y value
+        var knives = [];
+
+        draw = function () {
+          // Color background
+          background(255, 255, 255);
+          fill(255, 255, 0);
+          
+          translate(w / 2, h / 2);
+          
+          rotate(circleAngle);
+          
+          ellipse(0, 0, 200, 200);
+          
+          noFill();
+          
+          stroke(0, 0, 0);
+          
+          strokeWeight(2);
+          
+          arc(0, 0, 150, 100, 0, PI);
+          
+          fill(0, 0, 0);
+          
+          ellipse(50, 0, 10, 10);
+          
+          ellipse(-47, 0, 10, 10);
+          
+          rotate(-circleAngle);
+
+          fill(0, 0, 0);
+          
+          textSize(60);
+
+          var drawKnife = function(x, y) {
+            translate(x, y);
+            fill(0, 0, 0);
+            rect(x - 10, y - 10, 20, 20);
+            translate(-x, -y);
+          }
+
+          // Add new knife when key pressed
+          keyTyped = function () {
             if (keyCode === 0) {
-            println("typed");
+              knives[knives.length] = 120;
             }
+          };
+
+          //println(mouseX+" , "+mouseY);
+
+          // For all knives, render, and make it go up by 1 pixel. If it goes past 0 (the top), delete.
+          for (var i = 0; i < knives.length; i++) {
+            drawKnife(0, knives[i]);
+            knives[i] -= 1;
+
+            if (knives[i] < 54) {
+              knives[i] = null;
+            }
+
+
+          }
+
+          // Make circle rotate
+          circleAngle += 0.05;
+
+          // Draw fake knife
+          drawKnife(0, 120);
         };
 
-		
-        //println(rot+" , "+w+" , "+w)
-        };
-      
+
         // Code end:
-    }};
+      }
+    };
 
-  var canvas = document.getElementById("mycanvas"); 
-  var processingInstance = new Processing(canvas, programCode); 
+    var canvas = document.getElementById("mycanvas");
+    var processingInstance = new Processing(canvas, programCode);
   </script>
 </html>
