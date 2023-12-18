@@ -44,6 +44,20 @@
       textAlign(CENTER, CENTER);
       text("🗡️",0,100);
 
+
+		
+      fill(0,0,0);
+      textSize(60);
+      
+      knife = function(x,y,rotation) {
+      translate(x, y); 
+      fill(0,0,0);
+      text("🗡️",x-42,y+22);
+      ellipse(x,y,20,20);
+      }
+
+      knife(0,100,0);
+
 		
       //println(rot+" , "+w+" , "+w)
       };
