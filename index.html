@@ -32,10 +32,19 @@
           // All active knives (one not thrown is fake)
           // Ex: Knife = [10, 100, 10], where number is y value
           var knives = [];
+          var connectedKnives = [];
 
           var knifeSpeed = 1;
 
           var knifeCuttof = 100;
+
+          var drawKnife = function (x, y) {
+            translate(x, y);
+            fill(0, 0, 0);
+            rect(x - 10, y - 10, 20, 20);
+            translate(-x, -y);
+          };
+          
 
           draw = function () {
             // Color background
@@ -62,18 +71,16 @@
 
             ellipse(-47, 0, 10, 10);
 
+            connectedKnives.forEach((knife) => {
+              drawKnife(knife[0], knife[1]);
+            });
+            console.log(connectedKnives);
+
             rotate(-circleAngle);
 
             fill(0, 0, 0);
 
             textSize(60);
-
-            var drawKnife = function (x, y) {
-              translate(x, y);
-              fill(0, 0, 0);
-              rect(x - 10, y - 10, 20, 20);
-              translate(-x, -y);
-            };
 
             // Add new knife when key pressed
             keyTyped = function () {
@@ -94,6 +101,7 @@
               // When knife has hit
               if (knives[i] < 54) {
                 console.log("Collision");
+                connectedKnives[connectedKnives.length] = [54 * sin(circleAngle * Math.PI / 180), 54 * cos(circleAngle * Math.PI / 180)];
               }
             }
 
@@ -113,6 +121,7 @@
 
       var canvas = document.getElementById("mycanvas");
       var processingInstance = new Processing(canvas, programCode);
+
     </script>
   </body>
 </html>
