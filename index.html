@@ -1,71 +1,79 @@
 <!DOCTYPE html>
 <html> 
-	<head>
-    		<title>Knife Throwing Game</title> 
-   		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-	</head>
-  	<body>
-		<canvas id="mycanvas"></canvas> 
-  	</body>
+  <head>
+    <title>Knife Throwing Game</title> 
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+  <body>
 	
-  	<script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
- 	<script>
- 		var programCode = function(processingInstance) {
-    		with (processingInstance) {
-      		var gap = 70;
-      		size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap-gap/7); 
-      		frameRate(60);
-      		var rot = 0;
-		const img = document.querySelector("img");
+    <canvas id="mycanvas"></canvas> 
+  </body>
+	
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+  <script>
+  var programCode = function(processingInstance) {
+    with (processingInstance) {
+      var gap = 70;
+      size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap-gap/7); 
+      frameRate(60);
+      var rot = 0;
+	const img = document.querySelector("img"); 
 
-		// Code here:
-      
-    		draw = function () {
-  			size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap-gap/7); 
- 		  	rot = rot + 0.05;
- 			var w = window.innerWidth-window.innerWidth/gap;
- 			var h = window.innerHeight-window.innerHeight/gap;
-		    	background(255,255,255);
-		    	fill(255, 255, 0);
-		    	angleMode = "degrees";
-		    	translate(w/2, h/2); 
-		    	rotate(rot);
-		  	ellipse(0, 0, 200, 200);
-		    	noFill();
-		    	stroke(0, 0, 0);
-		    	strokeWeight(2);
-		    	arc(0, 0, 150, 100, 0, PI);
-		    	fill(0, 0, 0);
-		    	ellipse(50, 0, 10, 10);
-		    	ellipse(-47, 0, 10, 10);
-		    	rotate(-rot);
 
-    			fill(0,0,0);
-        		textSize(60);
+
+      // Code here:
       
-        	var knife = function(x,y,num) {
-        		translate(x, y); 
-        		fill(0,0,0);
-        		//text("🗡️",x-42,y+22);
-        		rect(x-10,y-10,20,20);
-        		translate(-x, -y); 
-        	}
+    draw = function () {
+    size(window.innerWidth-window.innerWidth/gap, window.innerHeight-window.innerHeight/gap-gap/7); 
+    rot = rot + 0.05;
+    var w = window.innerWidth-window.innerWidth/gap;
+    var h = window.innerHeight-window.innerHeight/gap;
+    background(255,255,255);
+    fill(255, 255, 0);
+    angleMode = "degrees";
+    translate(w/2, h/2); 
+    rotate(rot);
+    ellipse(0, 0, 200, 200);
+    noFill();
+    stroke(0, 0, 0);
+    strokeWeight(2);
+    arc(0, 0, 150, 100, 0, PI);
+    fill(0, 0, 0);
+    ellipse(50, 0, 10, 10);
+    ellipse(-47, 0, 10, 10);
+    rotate(-rot);
+
+
+    fill(0,0,0);
+        textSize(60);
       
-        	knife(0,80,0);
+        var knife = function(x,y,num) {
+        translate(x, y); 
+        fill(0,0,0);
+        //text("🗡️",x-42,y+22);
+        rect(x-10,y-10,20,20);
+        translate(-x, -y); 
+        }
+      
+        knife(0,80,0);
         
-        	mouseClicked = function() {
-           		println("hi");
-        	}
+        keyTyped = function() {
+            if (keyCode === 0) {
+            println("typed");
+            }
+        };
 
-		//println(rot+" , "+w+" , "+w)
-        	};
+		
+        //println(rot+" , "+w+" , "+w)
+        };
+      
         // Code end:
-    	}};
+    }};
 
-  		var canvas = document.getElementById("mycanvas"); 
-  		var processingInstance = new Processing(canvas, programCode); 
-  	</script>
+  var canvas = document.getElementById("mycanvas"); 
+  var processingInstance = new Processing(canvas, programCode); 
+  </script>
 </html>
