@@ -123,7 +123,6 @@ var programCode = function (p) {
 
         if (dead === 1) {
             p.text("womp womp",-150,-160);
-            dead = 0;
         }
 
         p.mouseClicked = function () {
