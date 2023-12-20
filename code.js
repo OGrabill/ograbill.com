@@ -5,6 +5,7 @@ var programCode = function (p) {
         window.innerHeight
     );
     p.frameRate(60);
+    this.focus();
     let circleAngle = 0;
 
     // useful constants
