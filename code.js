@@ -20,7 +20,7 @@ var programCode = function (p) {
     // angles relative to rotating face of all knives stuck on face
     var connectedKnives = [];
 
-    var knifeSpeed = 1;
+    var knifeSpeed = 4;
 
     var knifeCuttof = 100;
 
@@ -112,7 +112,7 @@ var programCode = function (p) {
         circleAngle %= 360;
 
         // Draw fake knife
-        drawKnife(0, 80);
+        drawKnife(0, 120);
     };
 
     // Code end:
