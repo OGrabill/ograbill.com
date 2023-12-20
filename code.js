@@ -127,7 +127,7 @@ var programCode = function (p) {
 
         p.mouseClicked = function () {
             if (dead === 1) {
-                p.connectedKnives.length === 0;
+                connectedKnives.length === 0;
                 dead = 0;
             }
         ;
