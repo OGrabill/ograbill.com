@@ -77,7 +77,7 @@ var programCode = function (p) {
         p.fill(0, 0, 0);
 
         p.textSize(60);
-        p.text("Score: "+connectedKnives.length,-100,-200);
+        p.text("Score: "+connectedKnives.length,-120,-200);
         //println(rot+" , "+w+" , "+w)
         
         // Make circle rotate
@@ -100,7 +100,7 @@ var programCode = function (p) {
                         || Math.abs(angle - existingAngle) > 360 - knifeAngle
                     ) {
                         //alert(`You lose!\nScore: ${connectedKnives.length}`);
-                        p.text("womp womp",-100,-160);
+                        p.text("womp womp",-150,-160);
                         throw new Error("You lose!");
                     }
                 }
