@@ -116,8 +116,10 @@ var programCode = function (p) {
         
         shotKnives = newShotKnives;
 
-        // Draw fake knife
+        // Draw fake knife if not dead
+        if (dead === 0) {
         drawKnife(0, 120);
+        }
 
         if (dead === 1) {
             p.text("womp womp",-150,-160);
