@@ -101,7 +101,7 @@ var programCode = function (p) {
                     ) {
                         //alert(`You lose!\nScore: ${connectedKnives.length}`);
                         //println("You lose! - Score: "+connectedKnives.length);
-                        print("begin- ");
+                        print("You lose!");
                         throw new Error("You lose!");
                     }
                 }
