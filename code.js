@@ -39,7 +39,7 @@ var programCode = function (p) {
         pressed = true;
         const time = p.millis();
         if (p.key.code === 32 && time - lastShot > cooldown) {
-            shotKnives.push(80);
+            shotKnives.push(120);
             lastShot = time;
         }
     };
