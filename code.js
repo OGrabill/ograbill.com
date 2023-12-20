@@ -11,7 +11,7 @@ var programCode = function (p) {
     const w = window.innerWidth;
     const h = window.innerHeight;
     // how close knives can be before a game over
-    const knifeAngle = 360 / (200 * Math.PI / 20) - 7;
+    const knifeAngle = 360 / (200 * Math.PI / 20) - 4;
     // time between shots, in milliseconds
     const cooldown = 5;
 
