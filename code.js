@@ -20,7 +20,7 @@ var programCode = function (p) {
     // angles relative to rotating face of all knives stuck on face
     var connectedKnives = [];
 
-    var knifeSpeed = 4;
+    var knifeSpeed = 12;
 
     var knifeCuttof = 100;
 
