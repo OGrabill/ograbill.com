@@ -13,14 +13,14 @@ var programCode = function (p) {
     // how close knives can be before a game over
     const knifeAngle = 360 / (200 * Math.PI / 20) - 2;
     // time between shots, in milliseconds
-    const cooldown = 100;
+    const cooldown = 20;
 
     // y-positions of all knives moving towards face (one not thrown is fake)
     var shotKnives = [];
     // angles relative to rotating face of all knives stuck on face
     var connectedKnives = [];
 
-    var knifeSpeed = 12;
+    var knifeSpeed = 10;
 
     var knifeCuttof = 100;
 
