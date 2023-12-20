@@ -77,7 +77,7 @@ var programCode = function (p) {
         p.fill(0, 0, 0);
 
         p.textSize(60);
-        p.textAlign(CENTER,CENTER);
+        p.textAlign(CENTER);
         p.text("Score: "+connectedKnives.length,0,-200);
         //println(rot+" , "+w+" , "+w)
         
