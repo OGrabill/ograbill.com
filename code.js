@@ -121,6 +121,9 @@ var programCode = function (p) {
 
         if (dead === 1) {
             p.text("womp womp",-150,-160);
+            p.delay(5000);
+            connectedKnives.length(0);
+            dead = 0;
         }
     };
 
