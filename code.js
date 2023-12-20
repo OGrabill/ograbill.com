@@ -24,9 +24,9 @@ var programCode = function (p) {
 
     var knifeCuttof = 100;
 
-    textSize(60);
-    textAlign(CENTER,CENTER);
-    text("Score: "+connectedKnives.length,0,-200);
+    p.textSize(60);
+    p.textAlign(CENTER,CENTER);
+    p.text("Score: "+connectedKnives.length,0,-200);
     
     var drawKnife = function (x, y) {
         p.translate(x, y);
