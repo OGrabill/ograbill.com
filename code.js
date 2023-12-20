@@ -104,7 +104,6 @@ var programCode = function (p) {
                         || Math.abs(angle - existingAngle) > 360 - knifeAngle
                     ) {
                         //alert(`You lose!\nScore: ${connectedKnives.length}`);
-                        p.text("womp womp",-150,-160);
                         dead = 1;
                     }
                 }
@@ -119,7 +118,10 @@ var programCode = function (p) {
 
         // Draw fake knife
         drawKnife(0, 120);
-        
+
+        if (dead === 1) {
+            p.text("womp womp",-150,-160);
+        }
     };
 
     // Code end:
