@@ -100,7 +100,7 @@ var programCode = function (p) {
                         || Math.abs(angle - existingAngle) > 360 - knifeAngle
                     ) {
                         //alert(`You lose!\nScore: ${connectedKnives.length}`);
-                        println("You lose!\nScore: "+connectedKnives.length");
+                        println("You lose! - Score: "+connectedKnives.length);
                         throw new Error("You lose!");
                     }
                 }
