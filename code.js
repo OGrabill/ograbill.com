@@ -44,6 +44,10 @@ var programCode = function (p) {
             shotKnives.push(120);
             lastShot = time;
         }
+        if (p.key.code === 32 && dead === 1) {
+            connectedKnives.length = 0;
+            dead = 0;
+        }
     };
     p.keyReleased = function () {
         pressed = false;
@@ -128,6 +132,8 @@ var programCode = function (p) {
             p.text("womp womp",-150,-160);
         }
 
+        
+        
         p.mouseClicked = function () {
             if (dead === 1) {
                 connectedKnives.length = 0;
