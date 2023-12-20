@@ -77,7 +77,7 @@ var programCode = function (p) {
         p.fill(0, 0, 0);
 
         p.textSize(60);
-        p.text("Score: "+connectedKnives.length,-120,-200);
+        p.text("Score: "+connectedKnives.length,-110,-200);
         //println(rot+" , "+w+" , "+w)
         
         // Make circle rotate
