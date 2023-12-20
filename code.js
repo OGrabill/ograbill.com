@@ -131,7 +131,7 @@ var programCode = function (p) {
                 p.connectedKnives.length(0);
                 dead = 0;
             }
-        };
+        ;
     };
 
     };
