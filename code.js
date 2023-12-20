@@ -77,7 +77,7 @@ var programCode = function (p) {
         p.fill(0, 0, 0);
 
         p.textSize(60);
-
+        p.text("Score: "+connectedKnives.length,0,-200);
         //println(rot+" , "+w+" , "+w)
         
         // Make circle rotate
@@ -101,7 +101,6 @@ var programCode = function (p) {
                     ) {
                         //alert(`You lose!\nScore: ${connectedKnives.length}`);
                         //println("You lose! - Score: "+connectedKnives.length);
-                        print("You lose!");
                         throw new Error("You lose!");
                     }
                 }
