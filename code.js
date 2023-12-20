@@ -23,7 +23,10 @@ var programCode = function (p) {
     var knifeSpeed = 10;
 
     var knifeCuttof = 100;
-
+    
+    textAlign(CENTER,CENTER);
+    text("Score: "+connectedKnives.length,0,-200);
+    
     var drawKnife = function (x, y) {
         p.translate(x, y);
         p.fill(0, 0, 0);
@@ -77,8 +80,6 @@ var programCode = function (p) {
         p.fill(0, 0, 0);
 
         p.textSize(60);
-        p.textAlign(CENTER);
-        p.text("Score: "+connectedKnives.length,0,-200);
         //println(rot+" , "+w+" , "+w)
         
         // Make circle rotate
