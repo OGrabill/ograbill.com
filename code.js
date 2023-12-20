@@ -107,7 +107,9 @@ var programCode = function (p) {
                         dead = 1;
                     }
                 }
+                if (dead === 0) {
                 connectedKnives.push(angle);
+                }
             } else {
                 // delete all knives that have gone too far from list
                 newShotKnives.push(y);
@@ -122,12 +124,13 @@ var programCode = function (p) {
         }
 
         if (dead === 1) {
+            
             p.text("womp womp",-150,-160);
         }
 
         p.mouseClicked = function () {
             if (dead === 1) {
-                connectedKnives.length === 0;
+                connectedKnives.length = 0;
                 dead = 0;
             }
         ;
