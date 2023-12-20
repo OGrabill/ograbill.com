@@ -13,7 +13,7 @@ var programCode = function (p) {
     // how close knives can be before a game over
     const knifeAngle = 360 / (200 * Math.PI / 20) - 2;
     // time between shots, in milliseconds
-    const cooldown = 0;
+    const cooldown = 5;
 
     // y-positions of all knives moving towards face (one not thrown is fake)
     var shotKnives = [];
