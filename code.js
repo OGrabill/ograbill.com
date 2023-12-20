@@ -23,7 +23,9 @@ var programCode = function (p) {
     var knifeSpeed = 10;
 
     var knifeCuttof = 100;
-    
+
+    var dead = 0;
+
     var drawKnife = function (x, y) {
         p.translate(x, y);
         p.fill(0, 0, 0);
@@ -38,7 +40,7 @@ var programCode = function (p) {
         if (pressed) return;
         pressed = true;
         const time = p.millis();
-        if (p.key.code === 32 && time - lastShot > cooldown) {
+        if (p.key.code === 32 && time - lastShot > cooldown && dead === 0) {
             shotKnives.push(120);
             lastShot = time;
         }
@@ -80,9 +82,11 @@ var programCode = function (p) {
         p.text("Score: "+connectedKnives.length,-110,-200);
         //println(rot+" , "+w+" , "+w)
         
-        // Make circle rotate
+        // Make circle rotate if not dead
+        if (dead === 0) {
         circleAngle += 3;
         circleAngle %= 360;
+        }
         
         // Render each knife
         const newShotKnives = [];
@@ -101,7 +105,7 @@ var programCode = function (p) {
                     ) {
                         //alert(`You lose!\nScore: ${connectedKnives.length}`);
                         p.text("womp womp",-150,-160);
-                        throw new Error("You lose!");
+                        dead = 1;
                     }
                 }
                 connectedKnives.push(angle);
