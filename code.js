@@ -20,7 +20,7 @@ var programCode = function (p) {
     // angles relative to rotating face of all knives stuck on face
     var connectedKnives = [];
 
-    var knifeSpeed = 1;
+    var knifeSpeed = 4;
 
     var knifeCuttof = 100;
 
@@ -85,7 +85,7 @@ var programCode = function (p) {
         for (let y of shotKnives) {
             drawKnife(0, y);
             // Subtract one from each knife's position
-            y -= 2;
+            y -= knifeSpeed;
             if (y < 54) {
                 // When knife has hit
                 console.log("Collision");
