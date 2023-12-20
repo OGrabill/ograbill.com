@@ -79,16 +79,11 @@ var programCode = function (p) {
         p.textSize(60);
 
         //println(rot+" , "+w+" , "+w)
-
-        shotKnives = newShotKnives;
-
+        
         // Make circle rotate
         circleAngle += 3;
         circleAngle %= 360;
-
-        // Draw fake knife
-        drawKnife(0, 120);
-
+        
         // Render each knife
         const newShotKnives = [];
         for (let y of shotKnives) {
@@ -114,6 +109,11 @@ var programCode = function (p) {
                 newShotKnives.push(y);
             }
         }
+        
+        shotKnives = newShotKnives;
+
+        // Draw fake knife
+        drawKnife(0, 120);
         
     };
 
