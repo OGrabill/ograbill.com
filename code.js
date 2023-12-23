@@ -15,6 +15,8 @@ var programCode = function (p) {
     // time between shots, in milliseconds
     const cooldown = 5;
 
+    var knifeDistance = 120;
+    
     // y-positions of all knives moving towards face (one not thrown is fake)
     var shotKnives = [];
     // angles relative to rotating face of all knives stuck on face
@@ -41,7 +43,7 @@ var programCode = function (p) {
         pressed = true;
         const time = p.millis();
         if (p.key.code === 32 && time - lastShot > cooldown && dead === 0) {
-            shotKnives.push(80);
+            shotKnives.push(knifeDistance);
             lastShot = time;
         }
         if (p.key.code === 32 && dead === 1) {
@@ -124,7 +126,7 @@ var programCode = function (p) {
 
         // Draw fake knife if not dead
         if (dead === 0) {
-        drawKnife(0, 80);
+        drawKnife(0, knifeDistance);
         }
 
         if (dead === 1) {
