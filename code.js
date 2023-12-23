@@ -41,7 +41,7 @@ var programCode = function (p) {
         pressed = true;
         const time = p.millis();
         if (p.key.code === 32 && time - lastShot > cooldown && dead === 0) {
-            shotKnives.push(120);
+            shotKnives.push(80);
             lastShot = time;
         }
         if (p.key.code === 32 && dead === 1) {
@@ -124,7 +124,7 @@ var programCode = function (p) {
 
         // Draw fake knife if not dead
         if (dead === 0) {
-        drawKnife(0, 120);
+        drawKnife(0, 80);
         }
 
         if (dead === 1) {
