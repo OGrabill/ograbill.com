@@ -2,11 +2,11 @@
 var programCode = function (p) {
     p.size(
         window.innerWidth,
-        window.innerHeight
+        window.innerHeight,
+        window.focus()
     );
     p.frameRate(60);
     let circleAngle = 0;
-    p.focus();
     
     // useful constants
     const w = window.innerWidth;
