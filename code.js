@@ -132,7 +132,7 @@ var programCode = function (p) {
 
         if (dead === 1) {
             
-            p.text("womp womp",-150,-160);
+            p.text("FUCK YOU TELLER",-150,-160);
         }
 
         
