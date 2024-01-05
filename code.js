@@ -29,8 +29,6 @@ var programCode = function (p) {
 
     var dead = 0;
 
-    var win = 0;
-    
     var drawKnife = function (x, y) {
         p.translate(x, y);
         p.fill(0, 0, 0);
@@ -52,10 +50,6 @@ var programCode = function (p) {
         if (p.key.code === 32 && dead === 1) {
             connectedKnives.length = 0;
             dead = 0;
-        }
-        if (p.key.code === 32 && win === 1) {
-            connectedKnives.length = 0;
-            win = 0;
         }
     };
     p.keyReleased = function () {
@@ -96,7 +90,7 @@ var programCode = function (p) {
         //println(rot+" , "+w+" , "+w)
         
         // Make circle rotate if not dead
-        if (dead === 0 || win === 0) {
+        if (dead === 0) {
         circleAngle += 3;
         circleAngle %= 360;
         }
@@ -116,14 +110,11 @@ var programCode = function (p) {
                         Math.abs(angle - existingAngle) < knifeAngle
                         || Math.abs(angle - existingAngle) > 360 - knifeAngle
                     ) {
+                        //alert(`You lose!\nScore: ${connectedKnives.length}`);
                         dead = 1;
                     }
-
-                    if (connectedKnives.length >= 20) {
-                        win = 1;
-                    }
                 }
-                if (dead === 0 || win === 0) {
+                if (dead === 0) {
                 connectedKnives.push(angle);
                 }
             } else {
@@ -135,7 +126,7 @@ var programCode = function (p) {
         shotKnives = newShotKnives;
 
         // Draw fake knife if not dead
-        if (dead === 0 || win === 0) {
+        if (dead === 0) {
         drawKnife(0, knifeDistance);
         }
 
@@ -145,14 +136,9 @@ var programCode = function (p) {
         }
 
         
-        if (win === 1) {
-            
-            p.text("you win",-150,-160);
-        }
-        
         
         p.mouseClicked = function () {
-            if (dead === 1 || win === 1) {
+            if (dead === 1) {
                 connectedKnives.length = 0;
                 dead = 0;
             }
