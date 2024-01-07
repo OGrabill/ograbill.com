@@ -53,8 +53,12 @@ var programCode = function (p) {
         }
     };
 
+    p.keyReleased = function () {
+        pressed = false;
+    };
 
-    mouseClicked = function () {
+    p.mouseClicked = function () {
+        println("hi");
         const time = p.millis();
         if (time - lastShot > cooldown && dead === 0) {
             shotKnives.push(knifeDistance);
@@ -65,12 +69,7 @@ var programCode = function (p) {
             dead = 0;
         }
     };
-
     
-    p.keyReleased = function () {
-        pressed = false;
-    };
-
     p.draw = function () {
         // Color background
         p.background(255, 255, 255);
