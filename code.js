@@ -58,16 +58,7 @@ var programCode = function (p) {
     };
 
     p.mouseClicked = function () {
-        println("hi");
-        const time = p.millis();
-        if (time - lastShot > cooldown && dead === 0) {
-            shotKnives.push(knifeDistance);
-            lastShot = time;
-        }
-        if (dead === 1) {
-            connectedKnives.length = 0;
-            dead = 0;
-        }
+        console.log("clicked");
     };
     
     p.draw = function () {
