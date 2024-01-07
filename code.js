@@ -57,7 +57,7 @@ var programCode = function (p) {
         pressed = false;
     };
 
-    p.mouseClicked () {
+    p.mouseClicked = function () {
         console.log("clicked");
         const time = p.millis();
         if (time - lastShot > cooldown && dead === 0) {
