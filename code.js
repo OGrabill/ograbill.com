@@ -6,7 +6,7 @@ var programCode = function (p) {
         window.focus()
     );
     p.frameRate(60);
-    let circleAngle = 0;
+    let circleAngle = 2;
     
     // useful constants
     const w = window.innerWidth;
@@ -71,20 +71,19 @@ var programCode = function (p) {
     };
     
     p.draw = function () {
-    // Color background
-    p.background(255, 255, 255);
+        // Color background
+        p.background(255, 255, 255);
 
-    p.translate(w / 2, h / 2);
+        p.translate(window.innerWidth / 2, window.innerHeight / 2);
 
-    // Randomly adjust circle speed
-    if (p.frameCount % 10 === 0) { // Adjust speed every 10 frames
-        circleSpeed += p.random(-1, 1); // Randomly increase or decrease speed
-        circleSpeed = p.constrain(circleSpeed, -5, 5); // Constrain speed to avoid it being too fast or too slow
-    }
+        // Randomly adjust circle speed every few frames
+        if (p.frameCount % 60 === 0) { // Adjust speed every 60 frames for a noticeable effect
+            circleSpeed += p.random(-0.5, 0.5); // Change speed by a small random value
+            circleSpeed = p.constrain(circleSpeed, -3, 3); // Keep speed within a manageable range
+        }
 
-    p.rotate(p.radians(circleAngle));
-    circleAngle += circleSpeed; // Use variable speed for rotation
-    circleAngle %= 360; // Keep the angle within 0-360 degrees
+        circleAngle += circleSpeed; // Use variable speed for rotation
+        p.rotate(p.radians(circleAngle));
         
         p.fill(255, 255, 0);
         p.ellipse(0, 0, 200, 200);
