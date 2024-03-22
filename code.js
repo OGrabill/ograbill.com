@@ -71,11 +71,21 @@ var programCode = function (p) {
     };
     
     p.draw = function () {
-        // Color background
-        p.background(255, 255, 255);
+    // Color background
+    p.background(255, 255, 255);
 
-        p.translate(w / 2, h / 2);
-        p.rotate(p.radians(circleAngle));
+    p.translate(w / 2, h / 2);
+
+    // Randomly adjust circle speed
+    if (p.frameCount % 10 === 0) { // Adjust speed every 10 frames
+        circleSpeed += p.random(-1, 1); // Randomly increase or decrease speed
+        circleSpeed = p.constrain(circleSpeed, -5, 5); // Constrain speed to avoid it being too fast or too slow
+    }
+
+    p.rotate(p.radians(circleAngle));
+    circleAngle += circleSpeed; // Use variable speed for rotation
+    circleAngle %= 360; // Keep the angle within 0-360 degrees
+        
         p.fill(255, 255, 0);
         p.ellipse(0, 0, 200, 200);
 
