@@ -35,7 +35,6 @@ var programCode = function (p) {
     p.translate(x, y);
     p.imageMode(p.CENTER); // Set the image mode to CENTER for easy positioning
     p.image(knifeImage, x, y);
-    flower.resize(100, 100);
     p.translate(-x, -y);
 };
 
