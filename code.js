@@ -1,4 +1,3 @@
-
 var programCode = function (p) {
     p.size(
         window.innerWidth,
@@ -54,6 +53,7 @@ var programCode = function (p) {
         }
         if (p.key.code === 32 && dead === 1) {
             connectedKnives.length = 0;
+            shotKnives.length = 0; // Restart the game fully
             dead = 0;
         }
     };
@@ -71,6 +71,7 @@ var programCode = function (p) {
         }
         if (dead === 1) {
             connectedKnives.length = 0;
+            shotKnives.length = 0; // Restart the game fully
             dead = 0;
         }
     };
@@ -82,39 +83,78 @@ var programCode = function (p) {
         p.fill(255, 255, 0);
         p.ellipse(0, 0, 200, 200);
 
-        // Drawing face and score omitted for brevity
+        p.noFill();
+        p.stroke(0, 0, 0);
+        p.strokeWeight(2);
+        p.arc(0, 0, 150, 100, 0, Math.PI);
+
+        p.fill(0, 0, 0);
+        p.ellipse(50, 0, 10, 10);
+        p.ellipse(-47, 0, 10, 10);
 
         for (const angle of connectedKnives) {
-            drawKnife(54, 0, angle); // Pass the connected knife's angle for rotation
+            drawKnife(54, 0, angle + 90); // Add 90 to adjust the knife's angle to be perpendicular to the circle
         }
 
         p.rotate(p.radians(-circleAngle));
 
+        p.fill(0, 0, 0);
+
+        p.textSize(60);
+        p.text("Score: "+connectedKnives.length,-110,-200);
+        
+        // Make circle rotate if not dead
+        if (dead === 0) {
+        circleAngle += 3;
+        circleAngle %= 360;
+        }
+        
         // Render each knife
         const newShotKnives = [];
         for (let y of shotKnives) {
             // Calculate the rotation for the moving knife to face towards the circle
-            let rotation = Math.atan2(0 - y, 0 - 0) * (180 / Math.PI);
+            let rotation = Math.atan2(0 - y, 0 - 0) * (180 / Math.PI) + 90; // Adding 90 to align the knife's edge towards the circle
             drawKnife(0, y, rotation);
             y -= knifeSpeed;
             if (y < 54) {
-                // Collision logic unchanged
-            } else {
-                newShotKnives.push(y);
-            }
-        }
-        shotKnives = newShotKnives;
+                // When knife has hit
+                console.log("Collision");
+                const angle = (90 - circleAngle + 360) % 360;
+for (const existingAngle of connectedKnives) {
+if (
+Math.abs(angle - existingAngle) < knifeAngle
+|| Math.abs(angle - existingAngle) > 360 - knifeAngle
+) {
+dead = 1;
+}
+}
+if (dead === 0) {
+connectedKnives.push(angle);
+}
+} else {
+newShotKnives.push(y);
+}
+}
+shotKnives = newShotKnives;
 
-        // Draw fake knife without rotation if not dead
-        if (dead === 0) {
-            drawKnife(0, knifeDistance); // No rotation needed here
-        }
+scss
+Copy code
+    // Draw fake knife if not dead
+    if (dead === 0) {
+        // For the fake knife, we simulate its rotation to face downwards as if it's being held ready to throw
+        drawKnife(0, knifeDistance, -90); // Rotate to face downwards
+    }
 
-        // Game over text logic unchanged
-
-    };
+    if (dead === 1) {
+        p.fill(0);
+        p.textSize(32);
+        p.text("Game Over", -100, -100);
+        p.text("Click to restart", -150, -50);
+    }
+};
 };
 
 const canvas = document.getElementById("mycanvas");
 const processingInstance = new Processing(canvas, programCode);
+
 
