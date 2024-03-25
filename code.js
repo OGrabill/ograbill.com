@@ -29,12 +29,13 @@ var programCode = function (p) {
 
     var dead = 0;
 
+    knifeImage = p.loadImage('favicon-32x32.png');
+    
     var drawKnife = function (x, y) {
-        p.translate(x, y);
-        p.fill(0, 0, 0);
-        p.rect(x - 10, y - 10, 20, 20);
-        p.translate(-x, -y);
-    };
+    p.imageMode(p.CENTER); // Set the image mode to CENTER for easy positioning
+    p.image(knifeImage, x, y);
+};
+
 
     // Add new knife when key pressed
     let pressed = false;
