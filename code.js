@@ -30,7 +30,6 @@ var programCode = function (p) {
     var dead = 0;
 
     knifeImage = p.loadImage('favicon-32x32.png');
-    size(32,32);
     
     var drawKnife = function (x, y) {
     p.translate(x, y);
