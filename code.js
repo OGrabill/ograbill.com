@@ -30,11 +30,13 @@ var programCode = function (p) {
     var dead = 0;
 
     knifeImage = p.loadImage('favicon-32x32.png');
+    size(32,32);
     
     var drawKnife = function (x, y) {
     p.translate(x, y);
     p.imageMode(p.CENTER); // Set the image mode to CENTER for easy positioning
     p.image(knifeImage, x, y);
+    flower.resize(100, 100);
     p.translate(-x, -y);
 };
 
