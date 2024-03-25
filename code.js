@@ -1,3 +1,4 @@
+
 var programCode = function (p) {
     p.size(
         window.innerWidth,
@@ -30,15 +31,13 @@ var programCode = function (p) {
 
     knifeImage = p.loadImage('favicon-32x32.png');
     
-    // Adjusted drawKnife function to include rotation
-    var drawKnife = function (x, y, rotation = 0) {
-        p.push(); // Use push and pop to isolate transformations
-        p.translate(x, y);
-        p.rotate(p.radians(rotation)); // Apply rotation
-        p.imageMode(p.CENTER);
-        p.image(knifeImage, 0, 0); // Draw at new origin after translation
-        p.pop();
-    };
+    var drawKnife = function (x, y) {
+    p.translate(x, y);
+    p.imageMode(p.CENTER); // Set the image mode to CENTER for easy positioning
+    p.image(knifeImage, x, y);
+    p.translate(-x, -y);
+};
+
 
     // Add new knife when key pressed
     let pressed = false;
@@ -53,7 +52,6 @@ var programCode = function (p) {
         }
         if (p.key.code === 32 && dead === 1) {
             connectedKnives.length = 0;
-            shotKnives.length = 0; // Restart the game fully
             dead = 0;
         }
     };
@@ -71,13 +69,14 @@ var programCode = function (p) {
         }
         if (dead === 1) {
             connectedKnives.length = 0;
-            shotKnives.length = 0; // Restart the game fully
             dead = 0;
         }
     };
     
     p.draw = function () {
+        // Color background
         p.background(255, 255, 255);
+
         p.translate(w / 2, h / 2);
         p.rotate(p.radians(circleAngle));
         p.fill(255, 255, 0);
@@ -93,8 +92,11 @@ var programCode = function (p) {
         p.ellipse(-47, 0, 10, 10);
 
         for (const angle of connectedKnives) {
-            drawKnife(54, 0, angle + 90); // Add 90 to adjust the knife's angle to be perpendicular to the circle
+            p.rotate(p.radians(angle));
+            drawKnife(54, 0);
+            p.rotate(p.radians(-angle));
         }
+        console.log(connectedKnives);
 
         p.rotate(p.radians(-circleAngle));
 
@@ -102,6 +104,7 @@ var programCode = function (p) {
 
         p.textSize(60);
         p.text("Score: "+connectedKnives.length,-110,-200);
+        //println(rot+" , "+w+" , "+w)
         
         // Make circle rotate if not dead
         if (dead === 0) {
@@ -112,46 +115,56 @@ var programCode = function (p) {
         // Render each knife
         const newShotKnives = [];
         for (let y of shotKnives) {
-            // Calculate the rotation for the moving knife to face towards the circle
-            let rotation = Math.atan2(0 - y, 0 - 0) * (180 / Math.PI) + 90; // Adding 90 to align the knife's edge towards the circle
-            drawKnife(0, y, rotation);
+            drawKnife(0, y);
+            // Subtract one from each knife's position
             y -= knifeSpeed;
             if (y < 54) {
                 // When knife has hit
                 console.log("Collision");
                 const angle = (90 - circleAngle + 360) % 360;
-for (const existingAngle of connectedKnives) {
-if (
-Math.abs(angle - existingAngle) < knifeAngle
-|| Math.abs(angle - existingAngle) > 360 - knifeAngle
-) {
-dead = 1;
-}
-}
-if (dead === 0) {
-connectedKnives.push(angle);
-}
-} else {
-newShotKnives.push(y);
-}
-}
-shotKnives = newShotKnives;
+                for (const existingAngle of connectedKnives) {
+                    if (
+                        Math.abs(angle - existingAngle) < knifeAngle
+                        || Math.abs(angle - existingAngle) > 360 - knifeAngle
+                    ) {
+                        //alert(`You lose!\nScore: ${connectedKnives.length}`);
+                        dead = 1;
+                    }
+                }
+                if (dead === 0) {
+                connectedKnives.push(angle);
+                }
+            } else {
+                // delete all knives that have gone too far from list
+                newShotKnives.push(y);
+            }
+        }
+        
+        shotKnives = newShotKnives;
 
-scss
-Copy code
-    // Draw fake knife if not dead
-    if (dead === 0) {
-        // For the fake knife, we simulate its rotation to face downwards as if it's being held ready to throw
-        drawKnife(0, knifeDistance, -90); // Rotate to face downwards
-    }
+        // Draw fake knife if not dead
+        if (dead === 0) {
+        drawKnife(0, knifeDistance);
+        }
 
-    if (dead === 1) {
-        p.fill(0);
-        p.textSize(32);
-        p.text("Game Over", -100, -100);
-        p.text("Click to restart", -150, -50);
-    }
-};
+        if (dead === 1) {
+            
+            p.text("womp womp",-150,-160);
+        }
+
+        
+        
+        p.mouseClicked = function () {
+            if (dead === 1) {
+                connectedKnives.length = 0;
+                dead = 0;
+            }
+        ;
+    };
+
+    };
+
+    // Code end:
 };
 
 const canvas = document.getElementById("mycanvas");
