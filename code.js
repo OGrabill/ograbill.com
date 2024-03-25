@@ -32,8 +32,10 @@ var programCode = function (p) {
     knifeImage = p.loadImage('favicon-32x32.png');
     
     var drawKnife = function (x, y) {
+    p.translate(x, y);
     p.imageMode(p.CENTER); // Set the image mode to CENTER for easy positioning
     p.image(knifeImage, x, y);
+    p.translate(-x, -y);
 };
 
 
