@@ -1,37 +1,90 @@
-$('#navigation a').on('click', function(e) {
-  e.preventDefault();
-  var hash = this.hash;
-  $('html, body').animate({
-    scrollTop: $(this.hash).offset().top
-  }, 1000);
-});
+function currentWrapper() {
+  return document.querySelector(".gameWrapper.show").id;
+}
+function close() {
+  window.parent.connectionsGame.close();
+}
 
+function showWrapper(wrapper) {
+  let wrappers = document.querySelectorAll(".gameWrapper");
+  wrappers.forEach((elm) => {
+    elm.classList.remove("show");
+  });
+  document.querySelector("#" + wrapper).classList.add("show");
+}
 
-$('.toggler, .nav-content a:not(#dropdown-link)').on('click', function(){
-  $('.toggler').toggleClass('change');
-  $('.nav-content').slideToggle();
-  $('#dropdown-menu').slideUp();
-  $('.menu-overlay').toggle();
-});
+function signupPage(id) {
+  let wrappers = document.querySelectorAll("#signup .centeredArea > span");
+  wrappers.forEach((elm) => {
+    elm.style.display = "none";
+  });
+  document.querySelector("#signup #" + id).style.display = "block";
+}
 
-$('.nav-content .dropdown').on('click', function(){
-  $('#dropdown-menu').slideToggle();
-});
-
-$('.menu-overlay').on('click', function(){
-  $('.toggler').removeClass('change');
-  $('.nav-content').slideUp();
-  $('#dropdown-menu').slideUp();
-  $('.menu-overlay').hide();
-});
-
-$("#contact input, #contact textarea").on('focusout', function(){
-
-  var text_val = $(this).val();
-  if (text_val === "") {
-    $(this).removeClass('has-value');
-  } else {
-    $(this).addClass('has-value');
+window.signupActions = {};
+window.signupActions.backAction = "";
+window.signupActions.back = function () {
+  eval(this.backAction);
+};
+window.signupActions.backButton = function (event) {
+  let elm = document.querySelector("#signup .fa-left");
+  if (!event) elm.style.display = "none";
+  else {
+    elm.style.display = "block";
+    this.backAction = event;
   }
+};
+window.signupActions.welcome = async function () {
+  // check if signed up
+  let email = "test";
+  let signedUp = false;
+  let spreadsheetID = "1dpKTNsAZXmbEpQBkLZynzJaHJoW5X948MRLwBSiJ9KA";
+  let data = await fetch(
+    "https://docs.google.com/spreadsheets/d/" +
+      spreadsheetID +
+      "/export?format=tsv&gid=0"
+  );
+  let list = await data.text();
+  if (list.includes(email)) {
+    signedUp = true;
+  }
+  console.log(list, signedUp)
+  // show appropriate screen
+  if (signedUp) {
+    signupPage("complete");
+  } else {
+    signupPage("welcome");
+  }
+  this.backButton();
+  // show wrapper
+  showWrapper("signup");
+};
+window.signupActions.start = function () {
+  signupPage("confirm");
+  this.backButton("signupPage('welcome');window.signupActions.backButton()");
+  // fill name
+  // check phone number
+};
+window.signupActions.confirm = function() {
+  // check pronouns
+  // check phone number added
+  // if all good, next screen
+  signupPage("terms");
+  this.backButton("window.signupActions.start()");
+}
+window.signupActions.submit = async function() {
+  // verify venmo username is not blank
+  // confirm info again with popup
+  // hide back button & show loading page
+  signupPage('submitting')
+  this.backButton();
+  // submit with google form
+  await fetch("https://api.blockstatus.app/api/friends");
+  // show completion screen
+  signupPage('complete')
+}
 
-});
+window.onload = function () {
+  window.signupActions.welcome();
+};
+
