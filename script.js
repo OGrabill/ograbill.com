@@ -87,4 +87,3 @@ window.signupActions.submit = async function() {
 window.onload = function () {
   window.signupActions.welcome();
 };
-
