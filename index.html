@@ -56,115 +56,11 @@
   <span class="spacing"></span>
   Phone Number
   <input type="text" name="entry.906486428"><br><br>
-  <button type="submit">Submit Form</button>
+  <button type="submit">Submit</button>
     
 </form>
         
-        <br><br>
         
-        <div class="buttons">
-          <button onclick="window.signupActions.confirm()">
-            Continue <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-        
-      </span>
-      
-      <span id="terms" style="display:none;">
-        
-        <h2>Final Steps</h2>
-        
-        <span>
-          1. Read the <a target="_blank" href="https://docs.google.com/document/d/1belUWLJ6hiNuYpUpl4gEf9fJ8da585Q4ipirqHwkcQg/mobilebasic">official rules</a>
-          <span class="spacing"></span>
-          2. Venmo <a target="_blank" href="https://venmo.com/user/username">@username</a> $5
-          <span class="spacing"></span>
-          <span style="color:red">Include your full name in the Venmo description and do not "turn on for purchases"</span>
-          <span class="spacing"></span>
-          <span class="spacing"></span>
-          <input type="text" placeholder="Venmo username you paid with"/>
-        </span>
-        
-        <br><br>
-        
-        <div class="buttons">
-          <button class="highlight" onclick="window.signupActions.submit()">
-            Submit <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-        
-      </span>
-      
-      <span id="submitting" style="display:none">
-
-        <h2>One second!</h2>
-        
-        <p>Sending signup info to server</p>
-        
-      </span>
-      
-      <span id="complete" style="display:none">
-
-        <img src="https://irom.one/files/images/checkmark.png" width=250 />
-
-        <h2>You're all set!</h2>
-
-        <span>
-          Keep you eye out for a text with more information when the game begins
-          <br><br>
-          Targets sent out: April 21st by 5:00pm<br>
-          First round begins: April 23rd at 12:00am
-        </span>
-
-        <span class="spacing"></span>
-        <span class="spacing"></span>
-
-      </span>
-
-    </div>
-  </div>
-
-</div>
-
-<div class="gameWrapper" id="leaderboard">
-  <h1>
-    <i onclick="" class="fa-regular fa-rotate-right"></i>
-    Round <span>#1</span>
-  </h1>
-  <div class="buttonSlide">
-    <button onclick="showLeaderboard('allTime')">Eliminated</button>
-    <button onclick="showLeaderboard('thisWeek')">This Round</button>
-    <button onclick="showLeaderboard('info')">Passing</button>
-  </div>
-
-  <div class="borderWrap" id="allTime">
-    <div class="list flex dim">
-      <div class="item">Loading...</div>
-    </div>
-  </div>
-
-  <div class="borderWrap" id="thisWeek" style="display: none;">
-    <div class="list flex dim">
-      <div class="item">Loading...</div>
-    </div>
-  </div>
-
-  <div class="borderWrap" id="info" style="display: none;">
-    <p>
-      The weekly leaderboard is based on the order of completion.
-      <span class="spacing"></span>
-      The overall leaderboard points are as follows:<br>
-      <b>1st</b> to complete - 100 points<br>
-      <b>2nd</b> to complete - 99 points<br>
-      <b>3rd</b> to complete - 98 points<br>
-      <b>4th</b> to complete - 97 points<br>
-      minimum 10 points
-      <span class="spacing"></span>
-      These placing points are muiltiplied by the number of mistakes remaining at the end of the game.
-      <span class="spacing"></span>
-      You are also awarded B$ coins equivalent to the number of points you earn. Supporters earn double the
-      amount of coins.
-    </p>
 <!-- partial -->
   <script  src="./script.js"></script>
 
