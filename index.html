@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Oscar Grabill</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<i onclick="window.parent.connectionsGame.close();" class="fa-regular fa-xmark fixed"></i>
+
+<div class="gameWrapper show" id="loading">
+  <h1>
+    Senior Assassin
+  </h1>
+  <p>Loading...</p>
+</div>
+
+<!-- partial:index.partial.html -->
 <div class="gameWrapper" id="signup">
 
   <h1>
-    <i class="fa-regular fa-left"></i>
+    <i onclick="window.signupActions.back()" class="fa-regular fa-left"></i>
     Signup
   </h1>
 
@@ -61,6 +71,8 @@
 </form>
         
         
+<!-- partial -->
+  <script  src="./script.js"></script>
 <!-- partial -->
   <script  src="./script.js"></script>
 
