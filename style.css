@@ -1,129 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap');
-
-$handwriting: 'Sacramento', cursive;
-$cursive: 'Great Vibes', cursive;
-
-$white: #fff;
-$black: #000;
-
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap");
 h3 {
-    left: 0;
-    line-height: 200px;
-    position: absolute;
-    text-align: center;
-    top: 2.5%;
-    width: 100%;
+  left: 0;
+  line-height: 200px;
+  position: absolute;
+  text-align: center;
+  top: 2.5%;
+  width: 100%;
 }
 
 iframe {
-    border-radius: 25px;
-  
-    font-family: $handwriting;
-    position: absolute;
-    top: 37.5%;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 600px;
-    height: 370px;
-}
-
-@mixin hc(){
+  border-radius: 25px;
+  font-family: "Sacramento", cursive;
+  position: absolute;
+  top: 37.5%;
   left: 50%;
   transform: translatex(-50%);
+  width: 600px;
+  height: 370px;
 }
-
-@mixin vc(){
-  top: 50%;
-  transform: translatey(-50%);
-}
-
-@mixin cc(){
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-
 
 :root {
   font-size: 10vmin;
 }
 
-body{
+body {
   display: grid;
-  
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: $handwriting;
-  color: $white;
+  font-family: "Sacramento", cursive;
+  color: #fff;
   background: #333;
-  background-image: 
-    radial-gradient(ellipse at bottom left, rgba(0,163,203,1) 40%, rgba(0,163,203,0) 40%),
-    radial-gradient(ellipse at top right, rgba(0,163,203,1) 30%, rgba(0,163,203,0) 30%),
-    linear-gradient(to right, rgba(98,87,147,1) 0%, rgba(98,87,147,1) 33%, rgba(213,93,100,1) 33%, rgba(213,93,100,1) 66%, rgba(228,145,41,1) 66%);
+  background-image: radial-gradient(ellipse at bottom left, #00a3cb 40%, rgba(0, 163, 203, 0) 40%), radial-gradient(ellipse at top right, #00a3cb 30%, rgba(0, 163, 203, 0) 30%), linear-gradient(to right, #625793 0%, #625793 33%, #d55d64 33%, #d55d64 66%, #e49129 66%);
   background-size: 100% 100%;
-  
-  .message{
-    position: absolute;
-    right:  0.5vw;
-    top: 1vw;
-    max-width: 60vw;
-    font-size: 12px;
-    font-family: "Open Sans", sans-serif;
-
-    a{
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid #444;
-      &:hover{
-        border-width: 3px;
-      }
-    }
-
-  }
-  
-  .card {
-    margin: auto;
-    padding: 2em;
-    border-radius: 1em;
-    border: 1px solid transparentize($white, 0.5);
-    text-shadow: 0 0 1em transparentize($black, 0.5);
-    background: transparentize($white, 0.8);
-    backdrop-filter: blur(20px);
-    transform: perspective(500px);
-    transform-style: preserve-3d;
-    
-    .welcome {
-      font-family: $handwriting;
-      transform: translateZ(200px);
-      font-size: 80px;
-    }
-    
-    .year {
-      font-family: $cursive;
-      font-size: 2.5em;
-      
-      span {
-        display: block;
-        transform: translateZ(40px);
-        &:nth-child(2){
-          padding-left: 1em;
-          transform: translateZ(60px);
-        }
-        &:nth-child(3){
-          padding-left: 2em;
-          transform: translateZ(80px);
-        }
-      }
-      
-    }
-    
-  }
-  
+}
+body .message {
+  position: absolute;
+  right: 0.5vw;
+  top: 1vw;
+  max-width: 60vw;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+}
+body .message a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+}
+body .message a:hover {
+  border-width: 3px;
+}
+body .card {
+  margin: auto;
+  padding: 2em;
+  border-radius: 1em;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  transform: perspective(500px);
+  transform-style: preserve-3d;
+}
+body .card .welcome {
+  font-family: "Sacramento", cursive;
+  transform: translateZ(200px);
+  font-size: 80px;
+}
+body .card .year {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.5em;
+}
+body .card .year span {
+  display: block;
+  transform: translateZ(40px);
+}
+body .card .year span:nth-child(2) {
+  padding-left: 1em;
+  transform: translateZ(60px);
+}
+body .card .year span:nth-child(3) {
+  padding-left: 2em;
+  transform: translateZ(80px);
 }
